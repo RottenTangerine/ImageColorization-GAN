@@ -18,8 +18,8 @@ validate_loader = DataLoader(dataset=validate_dataset, batch_size=8, shuffle=Tru
 print(len(train_dataset), len(validate_dataset))
 
 # hyper params
-num_epochs = 20
-learning_rate = 1e-3
+num_epochs = 80
+learning_rate = 2e-4
 
 
 
@@ -62,7 +62,7 @@ for epoch in range(num_epochs):
 
 
 
-        if i % 20 == 0:
+        if i % 100 == 0:
             print(f'Training Epoch: {epoch + 1}/{num_epochs} [{i}/{len(train_loader)}]\tG_Loss: {G_loss.item():0.4f}\tD_Loss: {D_loss.item():0.4f}\tLR: {learning_rate:0.4f}')
 
 
