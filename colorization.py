@@ -9,7 +9,7 @@ import os
 
 transform = T.Compose([T.ToTensor(), T.Resize((256, 256)), T.Normalize(0.5, 0.5)])
 
-image = Image.open('picture/0_gray.jpg')
+image = Image.open('picture/22_gray.jpg')
 size = image.size
 size = (size[1], size[0])
 # print(size)
@@ -17,7 +17,10 @@ image = transform(image)
 image = image.unsqueeze(0)
 
 model = Generator()
-model.load_state_dict(torch.load('trained_model/GAN_G2022919214330.pth'))
+# model.load_state_dict(torch.load('trained_model/GAN_G20229192143![](picture/0_gray.jpg)30.pth'))
+checkpoint = torch.load('checkpoint/2022101119128_0.pt')
+model.load_state_dict(checkpoint['G_state_dict'])
+
 z = torch.rand(1, 1, 8, 8)
 output = model(image, z)
 # print(output.shape)
